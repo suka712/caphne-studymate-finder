@@ -1,6 +1,7 @@
 <template>
-  <div class="flex justify-center items-center">
-    <Card class="w-xs mt-60">
+  <!--------------------------------Hero Card--------------------------------->
+  <div class="flex justify-center items-center h-svh pb-50">
+    <Card class="w-xs">
       <CardContent>
         <h1 class="text-md font-bold">Caphne</h1>
         <p class="text-md font-extralight">Find your perfect studymate</p>
@@ -29,4 +30,19 @@
       </CardContent>
     </Card>
   </div>
+  <!--------------------------------Hero Card--------------------------------->
+  <div class="flex justify-center items-center gap-10">
+    <div class="w-md">
+      <h1 class="text-4xl font-medium leading-snug">
+        We connect friends with similar goals, motion and drive.
+      </h1>
+      <p class="text-md pt-6">
+        We want the friends you meet to feel intentional.
+        We want to connect like-minded people to grow together.
+      </p>
+      <Button class="mt-4">Connect today</Button>
+    </div>
+    <img class="h-96 rounded-2xl" src="/placeholder-1.png">
+  </div>
+  <!--------------------------------Hero Card--------------------------------->
 </template>
