@@ -29,8 +29,16 @@ const { showNavbar } = useScrollNavbar()
                   Contribute
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <NavigationMenuLink>English</NavigationMenuLink>
-                  <NavigationMenuLink>Vietnamese</NavigationMenuLink>
+                  <div class="flex gap-2">
+                    <Button variant="outline" class="size-24">
+                      <Icon name="ci:github" size="30"/>
+                    </Button>
+                    <div>
+                      <Button variant="ghost" class="h-8">Khiem Nguyen</Button>
+                      <Button variant="ghost" class="h-8">Rich Le</Button>
+                      <Button variant="ghost" class="h-8">Andrea Tran</Button>
+                    </div>
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
