@@ -1,11 +1,15 @@
 import 'dotenv/config'
 import express from 'express'
+import cors from 'cors'
 import { db } from './db/index.js'
 import { emailCollection } from './db/schema.js'
 
 const app = express()
 const PORT = process.env.PORT
 
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || 'http://localhost:3000'
+}))
 app.use(express.json())
 
 app.get('/', (req, res) => {
