@@ -30,13 +30,21 @@ const { showNavbar } = useScrollNavbar()
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div class="flex gap-2">
-                    <Button variant="outline" class="size-24">
-                      <Icon name="ci:github" size="30"/>
-                    </Button>
+                    <a href="https://github.com/suka712/caphne-studybuddy" target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" class="size-24">
+                        <Icon name="ci:github" size="30"/>
+                      </Button>
+                    </a>
                     <div>
-                      <Button variant="ghost" class="h-8">Khiem Nguyen</Button>
-                      <Button variant="ghost" class="h-8">Rich Le</Button>
-                      <Button variant="ghost" class="h-8">Andrea Tran</Button>
+                      <a href="https://github.com/suka712" target="_blank" rel="noopener noreferrer">
+                        <Button variant="ghost" class="h-8">Khiem Nguyen</Button>
+                      </a>
+                      <a href="https://github.com/Giaugg" target="_blank" rel="noopener noreferrer">
+                        <Button variant="ghost" class="h-8">Rich Le</Button>
+                      </a>
+                      <a href="https://github.com/trnahnh" target="_blank" rel="noopener noreferrer">
+                        <Button variant="ghost" class="h-8">Andrea Tran</Button>
+                      </a>
                     </div>
                   </div>
                 </NavigationMenuContent>
