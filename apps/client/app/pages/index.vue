@@ -147,6 +147,8 @@
 </template>
 
 <script setup lang="ts">
+const { public: { apiBase } } = useRuntimeConfig()
+
 const email = ref('')
 const isSubmitting = ref(false)
 const message = ref('')
@@ -158,7 +160,7 @@ async function submitEmail() {
   isError.value = false
 
   try {
-    await $fetch('/api/email-collection', {
+    await $fetch(`${apiBase}/api/email-collection`, {
       method: 'POST',
       body: { email: email.value }
     })
