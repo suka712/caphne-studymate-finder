@@ -37,13 +37,13 @@ const { showNavbar } = useScrollNavbar()
                     </a>
                     <div>
                       <a href="https://github.com/suka712" target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" class="h-8">Khiem Nguyen</Button>
+                        <Button variant="ghost" class="h-8 w-full justify-start">Khiem Nguyen</Button>
                       </a>
                       <a href="https://github.com/Giaugg" target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" class="h-8">Rich Le</Button>
+                        <Button variant="ghost" class="h-8 w-full justify-start">Rich Le</Button>
                       </a>
                       <a href="https://github.com/trnahnh" target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" class="h-8">Andrea Tran</Button>
+                        <Button variant="ghost" class="h-8 w-full justify-start">Andrea Tran</Button>
                       </a>
                     </div>
                   </div>
