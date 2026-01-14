@@ -2,10 +2,11 @@
 import { useScrollNavbar } from '~/lib/utils';
 
 const { showNavbar } = useScrollNavbar()
+const mobileMenuOpen = ref(false)
 </script>
 
 <template>
-  <header class="sticky top-0">
+  <header class="sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
     <nav class="flex items-center mx-auto max-w-7xl px-4 py-4 transition-opacity duration-500"
       :class="showNavbar ? 'opacity-100' : 'opacity-0 pointer-events-none'">
       <div class="flex flex-1 justify-start">
@@ -13,7 +14,8 @@ const { showNavbar } = useScrollNavbar()
           Caphne
         </NuxtLink>
       </div>
-      <div class="flex flex-3 gap-2 justify-center">
+      <!-- Desktop navigation -->
+      <div class="hidden lg:flex flex-3 gap-2 justify-center">
         <div>
           <Button class="rounded-l-3xl rounded-r-none">Stories</Button>
           <Button class="rounded-none">Events</Button>
@@ -53,7 +55,8 @@ const { showNavbar } = useScrollNavbar()
           </NavigationMenu>
         </div>
       </div>
-      <div class="flex flex-1 gap-2 justify-end">
+      <!-- Desktop right section -->
+      <div class="hidden lg:flex flex-1 gap-2 justify-end">
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -71,6 +74,37 @@ const { showNavbar } = useScrollNavbar()
           Start now
         </Button>
       </div>
+      <!-- Mobile hamburger button -->
+      <div class="flex lg:hidden">
+        <Button variant="ghost" size="icon" @click="mobileMenuOpen = !mobileMenuOpen">
+          <Icon v-if="mobileMenuOpen" name="lucide:x" size="24" />
+          <Icon v-else name="lucide:menu" size="24" />
+        </Button>
+      </div>
     </nav>
+    <!-- Mobile menu -->
+    <div v-if="mobileMenuOpen" class="lg:hidden border-t">
+      <div class="flex flex-col gap-2 px-4 py-4">
+        <Button variant="ghost" class="justify-start">Stories</Button>
+        <Button variant="ghost" class="justify-start">Events</Button>
+        <Button variant="ghost" class="justify-start">Friends</Button>
+        <Button variant="ghost" class="justify-start">Support</Button>
+        <Button variant="ghost" class="justify-start">Donate</Button>
+        <div class="border-t my-2"></div>
+        <p class="text-sm text-muted-foreground px-4">Contribute</p>
+        <a href="https://github.com/suka712/caphne-studybuddy" target="_blank" rel="noopener noreferrer">
+          <Button variant="ghost" class="justify-start w-full">
+            <Icon name="ci:github" size="20" class="mr-2" />
+            GitHub Repo
+          </Button>
+        </a>
+        <div class="border-t my-2"></div>
+        <p class="text-sm text-muted-foreground px-4">Language</p>
+        <Button variant="ghost" class="justify-start">English</Button>
+        <Button variant="ghost" class="justify-start">Vietnamese</Button>
+        <div class="border-t my-2"></div>
+        <Button class="w-full">Start now</Button>
+      </div>
+    </div>
   </header>
 </template>
