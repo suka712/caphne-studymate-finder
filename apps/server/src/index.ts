@@ -1,16 +1,23 @@
-import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import { passport } from './auth/passport.js'
+import { authRoutes } from './auth/auth.routes.js'
+import { env } from './config/env.js'
 import { db } from './db/index.js'
 import { emailCollection } from './db/schema.js'
 
 const app = express()
-const PORT = process.env.PORT
 
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000'
+  origin: env.corsOrigin,
+  credentials: true,
 }))
 app.use(express.json())
+app.use(cookieParser())
+app.use(passport.initialize())
+
+app.use('/api/auth', authRoutes)
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello from Express!' })
@@ -43,10 +50,10 @@ app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    uptime: `${hours}h ${minutes}m ${seconds}s`
+    uptime: `${hours}h ${minutes}m ${seconds}s`,
   })
 })
 
-app.listen(PORT, () => {
-  console.log(`Server running on port`, PORT)
+app.listen(env.port, () => {
+  console.log(`Server running on port ${env.port}`)
 })
