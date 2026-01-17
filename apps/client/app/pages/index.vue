@@ -5,28 +5,43 @@
       <CardContent>
         <h1 class="text-md font-bold">Caphne</h1>
         <p class="text-md font-extralight">Find your perfect studymate</p>
-        <div class="text-xl leading-relaxed">
-          <p class="mt-8">Connect with students</p>
-          <p>who understand you.</p>
-          <p>Find your perfect</p>
-          <p>study buddy today.</p>
-        </div>
-        <NuxtLink to="/start">
-          <Button class="mt-8 h-8 hover:px-6" variant="default" @click="scrollToSignup">
-            <Icon name="ri:sparkling-2-fill" size="20" />
-            Find your match now
-          </Button>
-        </NuxtLink>
-        <div class="flex gap-3 mt-3">
-          <Button class="h-8 hover:px-6" variant="secondary" @click="scrollToSignup">
-            <Icon name="ci:google" size="20" />
-            Google
-          </Button>
-          <Button class="h-8 hover:px-6" variant="secondary" @click="scrollToSignup">
-            <Icon name="ci:github" size="20" />
-            Github
-          </Button>
-        </div>
+
+        <template v-if="!isAuthenticated">
+          <div class="text-xl leading-relaxed">
+            <p class="mt-8">Connect with students</p>
+            <p>who understand you.</p>
+            <p>Find your perfect</p>
+            <p>study buddy today.</p>
+          </div>
+          <NuxtLink to="/start">
+            <Button class="mt-8 h-8 hover:px-6" variant="default">
+              <Icon name="ri:sparkling-2-fill" size="20" />
+              Find your match now
+            </Button>
+          </NuxtLink>
+          <div class="flex gap-3 mt-3">
+            <Button class="h-8 hover:px-6" variant="secondary" @click="loginWithGoogle">
+              <Icon name="ci:google" size="20" />
+              Google
+            </Button>
+            <Button class="h-8 hover:px-6" variant="secondary" @click="loginWithGitHub">
+              <Icon name="ci:github" size="20" />
+              Github
+            </Button>
+          </div>
+        </template>
+
+        <template v-else>
+          <div class="text-xl leading-relaxed">
+            <p class="mt-8">Welcome back,</p>
+            <p class="font-semibold">{{ user?.username }}!</p>
+          </div>
+          <NuxtLink to="/dashboard">
+            <Button class="mt-8 h-8 hover:px-6" variant="default">
+              Go to Dashboard
+            </Button>
+          </NuxtLink>
+        </template>
       </CardContent>
     </Card>
   </div>
@@ -158,6 +173,7 @@
 
 <script setup lang="ts">
 const { public: { apiBase } } = useRuntimeConfig()
+const { loginWithGoogle, loginWithGitHub, user, isAuthenticated } = useAuth()
 
 function scrollToSignup() {
   document.getElementById('signup')?.scrollIntoView({ behavior: 'smooth' })

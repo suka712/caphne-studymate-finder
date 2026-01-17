@@ -19,7 +19,7 @@ authRouter.get(
     const user = req.user as User
     const token = signToken(user.id)
     setAuthCookie(res, token)
-    res.redirect(env.clientUrl)
+    res.redirect(`${env.clientUrl}/dashboard`)
   }
 )
 
@@ -35,7 +35,7 @@ authRouter.get(
     const user = req.user as User
     const token = signToken(user.id)
     setAuthCookie(res, token)
-    res.redirect(env.clientUrl)
+    res.redirect(`${env.clientUrl}/dashboard`)
   }
 )
 
