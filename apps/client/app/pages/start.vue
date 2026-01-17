@@ -10,13 +10,13 @@ const selectedVibe = ref<Vibe>();
 
 const totalQuestions = 2;
 
-const next = () => {
+const onNext = () => {
   if (currentQuestion.value < totalQuestions) {
     currentQuestion.value++;
   }
 }
 
-const previous = () => {
+const onPrevious = () => {
   if (currentQuestion.value > 0) {
     currentQuestion.value--;
   }
@@ -36,8 +36,8 @@ const previous = () => {
       </div>
     </div>
     <!-- Question 2 -->
+    <div class="flex flex-col gap-2 justify-center">
     <div v-if="currentQuestion === 2">
-      <div class="flex flex-col gap-2 justify-center">
         <div class="flex justify-center gap-2">
           <Button class="hover:px-6" @click="selectedVibe = 'antara'">Male</Button>
           <Button class="hover:px-6" @click="selectedVibe = 'owl'">Owl</Button>
@@ -51,5 +51,10 @@ const previous = () => {
       Selected: {{ selectedGender }}
     </div>
   </div>
-  <ProgressControl />
+  <ProgressControl 
+    :currentQuestion="currentQuestion"
+    :totalQuestions="totalQuestions"
+    :onNext="onNext"
+    :onPrevious="onPrevious"
+  />
 </template>
