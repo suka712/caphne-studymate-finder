@@ -9,8 +9,16 @@ import { emailCollection } from './db/schema.js'
 
 const app = express()
 
+const allowedOrigins = env.corsOrigin.split(',').map(origin => origin.trim())
+
 app.use(cors({
-  origin: env.corsOrigin,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true,
 }))
 app.use(express.json())
